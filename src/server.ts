@@ -1,23 +1,12 @@
 import express from "express";
 
-import "./database"
+import "./database";
+import { routes } from "./routes";
 
 const app = express();
 
-app.get("/", (request, response) => {
-    return response.json(
-        {
-            message: "Hello world!"
-        }
-    );
-});
+app.use(express.json());
 
-app.post("/", (request, response) => {
-    return response.json(
-        {
-            message: "Hello, this is a POST request!"
-        }
-    );
-});
+app.use(routes);
 
 app.listen(5000, () => console.log("Server is running on port 5000"));
