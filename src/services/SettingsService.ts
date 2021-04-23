@@ -11,7 +11,7 @@ class SettingsService {
         const settingsRepository = getCustomRepository(SettingsRepository);
 
         //SELECT TOP 1 * FROM settings WHERE username = @username;
-        const userAlreadyExists = settingsRepository.findOne({ username });
+        const userAlreadyExists = await settingsRepository.findOne({ username });
 
         if (userAlreadyExists) {
             throw new Error("User already exists!");
